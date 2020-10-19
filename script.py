@@ -10,11 +10,12 @@ page = reponse.content
 soup = BeautifulSoup(page, "html.parser")
 
 product_page_url = url
-print(url) #impression de l'url de la page
+print("Product page url", url) #impression de l'url de la page
 
-trs = soup.findAll('tr')
-[print(str(tr) + '\n\n') for tr in trs] #impression des lignes du tableau du site
+"""trs = soup.findAll('tr')
+[print(str(tr) + '\n\n') for tr in trs]""" #impression des lignes du tableau du site
 """print(len(trs))""" #impression du nombre de lignes
+
 table = soup.find('table', {'class': 'table table-striped'})
 th = table.find('th', text='UPC')
 td = th.findNext('td')
@@ -35,18 +36,9 @@ th = table.find('th', text='Availability')
 td = th.findNext('td')
 print(th.text, '=', td.text)
 
-"""article = soup.find('article', {'class': 'product_page'})
-p = article.find('p')
-print(p.text)"""
-
-"""article = soup.find('article', {'class': 'product_page'})
-p = article.find('p')
-print(article)"""
-
-"""article = soup.find('p', {'class': 'product_page'})
-p = article.findNext('p')
-print('product-description = ', p)"""
-
+div = soup.find('div', {'id': 'product_description'})
+p = div.findNext('p')
+print("Product description : ", p.text)
 
 th = table.find('th', text='Product Type')
 td = th.findNext('td')
@@ -55,6 +47,14 @@ print(th.text, '=', td.text)
 th = table.find('th', text='Number of reviews')
 td = th.findNext('td')
 print(th.text, '=', td.text)
+
+div = soup.find('div', {'class': 'item active'})
+img_tags = div.findNext('img')['src']
+print("Image url : http://books.toscape.com" + img_tags)
+
+"""img_tags = soup.find('img')
+image_url = [img['src'] for img in img_tags]
+print(image_url)"""
 
 """with open('fichier.csv', 'w', newline='') as f:
     writer = csv.writer(f)
