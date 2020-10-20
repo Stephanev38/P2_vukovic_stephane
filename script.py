@@ -50,11 +50,7 @@ print(th.text, '=', td.text)
 
 div = soup.find('div', {'class': 'item active'})
 img_tags = div.findNext('img')['src']
-print("Image url : http://books.toscape.com" + img_tags)
-
-"""img_tags = soup.find('img')
-image_url = [img['src'] for img in img_tags]
-print(image_url)"""
+print("Image url : http://books.toscape.com" + img_tags[5:])
 
 """with open('fichier.csv', 'w', newline='') as f:
     writer = csv.writer(f)
