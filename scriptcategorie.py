@@ -8,11 +8,13 @@ from bs4 import BeautifulSoup
 
 url = "http://books.toscrape.com/catalogue/category/books/travel_2/index.html"
 
-contenu = requests.get(url) # récupération de la page à analyser
-page = BeautifulSoup(contenu.text, "html.parser")
+response = requests.get(url) # récupération de la page à analyser
+response.encoding = "utf-8"
+page = BeautifulSoup(response.text, "html.parser")
 
 links = [] #création d'une liste
-soup = BeautifulSoup(contenu.text, "html.parser")
+response.encoding = "utf-8"
+soup = BeautifulSoup(response.text, "html.parser")
 urls = soup.findAll('h3')
 for h3 in urls:
     a = h3.find('a')
@@ -21,6 +23,7 @@ for h3 in urls:
 
 for link in links:
     response = requests.get(link)
+    response.encoding = "utf-8"
     soup = BeautifulSoup(response.text, "html.parser")
     url_product = link
     product_page_url = url_product
