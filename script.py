@@ -8,8 +8,9 @@ from bs4 import BeautifulSoup
 
 url = "http://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html"
 
-contenu = requests.get(url) # récupération de la page à analyser
-page = BeautifulSoup(contenu.text, "html.parser")
+response = requests.get(url) # récupération de la page à analyser
+response.encoding = "utf-8"
+page = BeautifulSoup(response.text, "html.parser")
 
 product_page_url = url
 print(url)
