@@ -13,19 +13,20 @@ response.encoding = "utf-8"
 soup = BeautifulSoup(response.text, "html.parser")
 
 uls = []
+url = []
 response.encoding = "utf-8"
 soup = BeautifulSoup(response.text, "html.parser")
-uls = soup.findAll('ul', {'class': 'nav nav-list'}) # uls = soup.find_all('aside', {'class': 'sidebar col-sm-4 col-md-3'})
+uls = soup.find('ul', {'class': 'nav nav-list'}).find('ul').find_all('a')
 
-for ul in uls:
-    """a = ul.find('a')
-    link = a['href']
-    links.append('http://books.toscrape.com/' + link[2:])
-    print(links)"""
-    a = ul.find('a')
+for ul in soup.find_all('a'):
+    """a = ul.find_all('a')
     ul = a['href']
-    uls.append('http://books.toscrape.com/' + ul[2:])
-    print(uls)
+    uls.append(ul)"""
+    uls.append(ul. get('href'))
+    #uls.append('http://books.toscrape.com/' + ul)
+print(uls) # url.append('http://books.toscrape.com/' + ul[2:])
+
+#print(url)
 
 for ul in uls:
     response = requests.get(ul)
