@@ -13,9 +13,9 @@ response.encoding = "utf-8"
 page = BeautifulSoup(response.text, "html.parser")
 
 links = [] #création d'une liste
-response.encoding = "utf-8"
-soup = BeautifulSoup(response.text, "html.parser")
-urls = soup.findAll('h3')
+response.encoding = "utf-8" #encodage
+soup = BeautifulSoup(response.text, "html.parser") #variable soup méthode scraping
+urls = soup.findAll('h3')  #utilisation varialble soup - 
 for h3 in urls:
     a = h3.find('a')
     link = a['href']
@@ -73,9 +73,9 @@ for link in links:
     col10 = "http://books.toscrape.com" + img_tags[5:]
     print("Image url : http://books.toscrape.com" + img_tags[5:]) #impression de l'url de l'image
 
-for link in links:
-    with open('categorie.csv', 'a', newline='') as out_file:
-        csv_writer = csv.writer(out_file, delimiter='\t')
+
+    with open('categorie.csv', 'a') as out_file:
+        csv_writer = csv.writer(out_file)
         csv_writer.writerow(['product page url', 'universal product code', 'title', 'price including tax', 'price excluding tax', 'number available', 'product description', 'category', 'review rating', 'image url'])
         csv_writer.writerow([product_page_url , col2.text , h1.text, col4.text, col5.text, col6.text, p.text, col8.text, col9.text, col10])
         out_file.close()
