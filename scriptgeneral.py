@@ -12,23 +12,14 @@ response = requests.get(url) # récupération de la page à analyser
 response.encoding = "utf-8"
 soup = BeautifulSoup(response.text, "html.parser")
 
-uls = []
-url = []
-response.encoding = "utf-8"
-soup = BeautifulSoup(response.text, "html.parser")
-uls = soup.find('ul', {'class': 'nav nav-list'}).find('ul').find_all('a')
+links = []
+links = soup.find('ul', {'class': 'nav nav-list'}).find('ul').find_all('a')
 
-for ul in soup.find_all('a'):
-    """a = ul.find_all('a')
-    ul = a['href']
-    uls.append(ul)"""
-    uls.append(ul. get('href'))
-    #uls.append('http://books.toscrape.com/' + ul)
-print(uls) # url.append('http://books.toscrape.com/' + ul[2:])
+for a in links:
+    links = soup.find('ul', {'class': 'nav nav-list'}).find('ul').find_all('a', href=True)
+    print("http://books.toscrape.com/" + a['href'])
 
-#print(url)
-
-for ul in uls:
+for ul in links:
     response = requests.get(ul)
     response.encoding = "utf-8"
     soup = BeautifulSoup(response.text, "html.parser")
