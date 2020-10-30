@@ -58,10 +58,11 @@ for link in links:
     p = div.findNext('p')
     print("Product description : ", p.text) #impression de product description
     
-    th = table.find('th', text='Product Type')
-    td = th.findNext('td')
-    col8 = td
-    print(th.text, '=', td.text) #impression de la categorie
+    li = soup.find('li', {'class': 'active'})
+    a = li.find_previous('a')
+    category = a['href']
+    col8 = a
+    print('Category = ', a.text) #impression de la categorie
     
     th = table.find('th', text='Number of reviews')
     td = th.findNext('td')
@@ -79,4 +80,3 @@ for link in links:
         csv_writer.writerow(['product page url', 'universal product code', 'title', 'price including tax', 'price excluding tax', 'number available', 'product description', 'category', 'review rating', 'image url'])
         csv_writer.writerow([product_page_url , col2.text , h1.text, col4.text, col5.text, col6.text, p.text, col8.text, col9.text, col10])
         out_file.close()
-        # 'wt', newline=''
