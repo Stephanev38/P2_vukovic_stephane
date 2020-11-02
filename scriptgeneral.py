@@ -56,6 +56,10 @@ for h3 in urls:
     link = a['href']
     links.append('http://books.toscrape.com/catalogue' + link[8:]) #concaténation du lien de la page avec celui du livre moins 8 caractères (../../..)
 
+with open('category.csv', 'a') as out_file:
+    csv_writer = csv.writer(out_file)
+    csv_writer.writerow(['product page url', 'universal product code', 'title', 'price including tax', 'price excluding tax', 'number available', 'product description', 'category', 'review rating', 'image url'])
+
 for link in booksUrls:
     response = requests.get(link)
     response.encoding = "utf-8"
@@ -65,8 +69,8 @@ for link in booksUrls:
         url_product = link
         product_page_url = url_product
         print(product_page_url)
-    except:
-        print() # ou pass!!!
+    except Exception as e:
+        print(e)
         
     try:
         table = soup.find('table', {'class': 'table table-striped'})
@@ -74,46 +78,46 @@ for link in booksUrls:
         td = th.findNext('td')
         col2 = td
         print(th.text, '=', td.text)
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
     try:    
         div = soup.find('div', {'class': 'col-sm-6 product_main'})
         h1 = div.find('h1')
         print("Title :", h1.text) #impression du titre
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
     try:
         th = table.find('th', text='Price (incl. tax)')
         td = th.findNext('td')
         col4 = td
         print(th.text, '=', td.text) #impression du prix ttc
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
     try:
         th = table.find('th', text='Price (excl. tax)')
         td = th.findNext('td')
         col5 = td
         print(th.text, '=', td.text) #impression du prix ht
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
     try:
         th = table.find('th', text='Availability')
         td = th.findNext('td')
         col6 = td
         print(th.text, '=', td.text) #impression d'availability
-    except:
-        print()    
+    except Exception as e:
+        print(e)    
 
     try:
         div = soup.find('div', {'id': 'product_description'})
         p = div.findNext('p')
         print("Product description : ", p.text) #impression de product description
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
     try:
         li = soup.find('li', {'class': 'active'})
@@ -121,16 +125,16 @@ for link in booksUrls:
         category = a['href']
         col8 = a
         print('Category = ', a.text) #impression de la categorie
-    except:
-        print()
+    except Exception as e:
+        print(e)
         
     try:
         th = table.find('th', text='Number of reviews')
         td = th.findNext('td')
         col9 = td
         print(th.text, '=', td.text) #impression du nombre dans le stock
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
     try:
         div = soup.find('div', {'class': 'item active'})
@@ -140,10 +144,15 @@ for link in booksUrls:
         image_url = col10
         image_filename = wget.download(image_url)
         print('Image Successfully Downloaded: ', image_filename)
-    except:
-        print()
+    except Exception as e:
+        print(e)
 
-    if col8.text == "Travel":
+    with open('category.csv', 'a') as out_file:
+        csv_writer = csv.writer(out_file)
+        csv_writer.writerow([product_page_url , col2.text , h1.text, col4.text, col5.text, col6.text, p.text, col8.text, col9.text, col10])
+        out_file.close()
+
+    """if col8.text == "Travel":
         with open('Travel.csv', 'a') as out_file:
             csv_writer = csv.writer(out_file)
             csv_writer.writerow(['product page url', 'universal product code', 'title', 'price including tax', 'price excluding tax', 'number available', 'product description', 'category', 'review rating', 'image url'])
@@ -442,4 +451,4 @@ for link in booksUrls:
             csv_writer = csv.writer(out_file)
             csv_writer.writerow(['product page url', 'universal product code', 'title', 'price including tax', 'price excluding tax', 'number available', 'product description', 'category', 'review rating', 'image url'])
             csv_writer.writerow([product_page_url , col2.text , h1.text, col4.text, col5.text, col6.text, p.text, col8.text, col9.text, col10])
-            out_file.close()
+            out_file.close()"""
