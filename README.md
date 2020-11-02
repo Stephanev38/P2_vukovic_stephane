@@ -1,0 +1,33 @@
+# Projet 2 : Utilisez les bases de Python pour l'analyse de marché.
+
+Dans ce projet, on travaille comme analyste marketing dans une librairire en ligne. Nous voulons suivre les prix de nos concurrents. Nous allons nous servir de Python pour cela.
+
+​		Site Web a analyser : https://books.toscrape.com/
+
+
+
+## Pré-requis :
+
+Pour le bon déroulement de l'analyse, il faut au préalable installer le programme Python 3.8 (téléchargeable à l'adresse suivante : https://www.python.org/ ), puis les packages mentionnés dans le  fichier requirements.txt
+
+
+
+## Déroulement :
+
+Le fichier script.py vous donne les informations d'un livre du site : *It's Only the Himalayas* ,ces informations seront enregistrées dans un fichier nommé fichier.csv qui va se créé dans le dossier du script.py
+
+Le fichier scriptcategorie.py vous donne les informations de tous les livres d'une des catégories du site, la catégorie Travel, avec la création d'un fichier nommé categorie.csv qui va se trouver dans le dossier du scriptcategorie.py 
+
+Le fichier scriptgeneral.py vous permet de récupérer les informations de tous les livres du site, ces informations vont être enregistrées dans des fichiers csv distincts portant le nom des différentes catégories du site. Les images de la couverture de chaque livre seront téléchargées dans un dossier images
+
+
+
+## Fabriqué avec :
+
+Pour développer mon projet, je me suis servi de Visual Studio Code. J'ai aussi consulté de nombreuses ressources comme Stack Overflow, Stack Overrun mais aussi Google comme moteur de recherche.
+
+
+
+## Remerciements :
+
+Je remercie les personnes des groupes "Python" sur le Workplace d'Openclassrooms et Discord pour leurs conseil et plus particulièrement Aurélien mon mentor.
