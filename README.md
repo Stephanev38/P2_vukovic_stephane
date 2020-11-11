@@ -1,6 +1,6 @@
 # Projet 2 : Utilisez les bases de Python pour l'analyse de marché.
 
-Dans ce projet, on travaille comme analyste marketing dans une librairire en ligne. Nous voulons suivre les prix de nos concurrents. Nous allons nous servir de Python pour cela
+Dans ce projet, on travaille comme analyste marketing dans une librairire en ligne. Nous voulons suivre les prix de nos concurrents. Nous allons nous servir de Python pour cela.
 
 ​		Site Web a analyser : https://books.toscrape.com/
 
