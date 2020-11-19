@@ -15,6 +15,6 @@ def categoriesAndCsv(booksUrls):
         except Exception as e:
             print(e)
 
-        with open(col8.text + '.csv', 'w') as out_file: # création des csv avec en-têtes
+        with open("csv/" + col8.text + '.csv', 'w') as out_file: # création des csv avec en-têtes
             csv_writer = csv.writer(out_file)
             csv_writer.writerow(['product page url', 'universal product code', 'title', 'price including tax', 'price excluding tax', 'number available', 'product description', 'category', 'review rating', 'image url'])
