@@ -12,11 +12,13 @@ Dans ce projet, on travaille comme analyste marketing dans une librairire en lig
 
 Pour le bon déroulement de l'analyse, il faut au préalable installer le programme Python 3.8 (téléchargeable à l'adresse suivante : https://www.python.org/ ), puis les packages mentionnés dans le  fichier requirements.txt
 
-Ensuite mettre dans le même dossier les trois scripts suivants:
+Ensuite mettre dans le même dossier les cinq scripts suivants:
 
 - scriptgeneral.py
 - fonctioncategories.py
 - fonctioninformations.py
+- fonctionprime.py
+- fonctionurls.py
 
 De plus, il faut activer au préalable l'environnement virtuel en se plaçant dans le dossier Openclassrooms du bureau puis en lançant la ligne de commande dans le terminal: source env/env/bin/activate
 
