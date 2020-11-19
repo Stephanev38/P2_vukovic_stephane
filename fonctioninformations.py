@@ -90,7 +90,7 @@ def informationsAndCsv(booksUrls):
         except Exception as e:
             print(e)
 
-        with open(col8.text + '.csv', 'a') as out_file: # complément du csv avec les informations du livre
+        with open("csv/" + col8.text + '.csv', 'a') as out_file: # complément du csv avec les informations du livre
             csv_writer = csv.writer(out_file)
             csv_writer.writerow([product_page_url , col2.text , h1.text, col4.text, col5.text, col6.text, p.text, col8.text, col9.text, col10])
             out_file.close()
