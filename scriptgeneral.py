@@ -15,12 +15,11 @@ from fonctionurls import getBooksURLs
 from fonctioncategories import categoriesAndCsv
 from fonctioninformations import informationsAndCsv
 
-os.mkdir("images")
-os.mkdir("csv")
-URL = "http://books.toscrape.com/"
-booksUrls = []
-
 def main():
+    os.mkdir("images")
+    os.mkdir("csv")
+    URL = "http://books.toscrape.com/"
+    booksUrls = []
     fonctionG(getAndParseURL, getBooksURLs, booksUrls)
     getAndParseURL(URL)
     getBooksURLs(URL)
